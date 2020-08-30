@@ -4,14 +4,13 @@ from bs4 import BeautifulSoup
 from urllib.parse import urljoin
 import csv 
 
-lst_csv = []
 r = requests.get("https://www.indeed.com/jobs?as_and=software%20engineering%202021&as_phr&as_any&as_not&as_ttl&as_cmp&jt=all&st&as_src&salary&radius=25&l&fromage=any&limit=50&sort&psf=advsrch&from=advancedsearch&vjk=feb8c8fef1d0b421")
 
 
 soup = BeautifulSoup(r.text,"html.parser")
 print(soup.prettify())
 
-file= pd.DataFrame(columns=["Location","Company","Summary","Title","Link"])
+file= pd.DataFrame(columns=["Location","Company","Title","Link"])
 
 
 def extract_job_title(soup): 
